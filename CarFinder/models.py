@@ -2,10 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class ListingImage(models.Model):
-    pass
+    image = models.ImageField(upload_to='listings/images')
+    listing = models.ForeignKey(Listing)
 
 class Listing(models.Model):
-    pass
+    vendor = models.ForeignKey(Vendor)
+    car = models.ForeignKey(Car)
+    date_created = models.DateTimeField(auto_now_add=True)
 
 class Vendor(models.Model):
     contact = models.ForeignKey(User,unique=True)
@@ -20,6 +23,7 @@ class Make(models.Model):
 
 class Trim(models.Model):
     name = models.CharField(max_length=200)
+    car = models.ForeignKey(Car)
 
     def __unicode__(self):
         return self.name
@@ -29,7 +33,6 @@ class Car(models.Model):
     make = models.ForeignKey(Make)
     model = models.CharField(max_length=200)
     year = models.IntegerField()
-    trim = models.ForeignKey(Trim)
 
 class Option(models.Model):
     name = models.CharField(max_length=200)

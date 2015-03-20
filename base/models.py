@@ -13,6 +13,11 @@ class Car(models.Model):
     model = models.CharField(max_length=200)
     year = models.IntegerField()
 
+class Vendor(models.Model):
+    contact = models.ForeignKey(User,unique=True)
+    website = models.URLField()
+    approved = models.BooleanField(default=False)
+
 class Listing(models.Model):
     vendor = models.ForeignKey(Vendor)
     car = models.ForeignKey(Car)
@@ -21,11 +26,6 @@ class Listing(models.Model):
 class ListingImage(models.Model):
     image = models.ImageField(upload_to='listings/images')
     listing = models.ForeignKey(Listing)
-
-class Vendor(models.Model):
-    contact = models.ForeignKey(User,unique=True)
-    website = models.URLField()
-    approved = models.BooleanField(default=False)
 
 class Trim(models.Model):
     name = models.CharField(max_length=200)

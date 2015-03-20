@@ -1,6 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class Make(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.name
+
 class Car(models.Model):
     doors = models.IntegerField()
     make = models.ForeignKey(Make)
@@ -20,12 +26,6 @@ class Vendor(models.Model):
     contact = models.ForeignKey(User,unique=True)
     website = models.URLField()
     approved = models.BooleanField(default=False)
-
-class Make(models.Model):
-    name = models.CharField(max_length=200)
-
-    def __unicode__(self):
-        return self.name
 
 class Trim(models.Model):
     name = models.CharField(max_length=200)

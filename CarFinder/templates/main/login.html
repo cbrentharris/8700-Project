@@ -1,3 +1,4 @@
+<div class="jumbotron">
 {% if form.errors %}
 
 <h1>Oops!</h1>
@@ -9,14 +10,14 @@
 <p>Welcome to CarFinder</p>
 
 {% endif %}
-
-<form id="login-form" method='post' action="{% url 'login' %}">
+</div>
+<form class="inline-form" id="login-form" method='post' action="{% url 'login' %}">
 {% csrf_token %}
-  <div>
+  <div class="form-group">
     {{ form.username.label_tag }}
     {{ form.username }}
  </div>
- <div>
+ <div class="form-group">
     {{ form.password.label_tag }}
     {{ form.password }}
  </div>
@@ -25,3 +26,5 @@
     <button type="submit">Login</button>
   </p> 
 </form>
+
+{% include "main/bootstrap.html" }

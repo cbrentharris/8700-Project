@@ -1,0 +1,27 @@
+{% if form.errors %}
+
+<h1>Oops!</h1>
+<p>Looks like you entered an incorrect username and password.</p>
+
+{% else %}
+
+<h1>Hello!</h1>
+<p>Welcome to CarFinder</p>
+
+{% endif %}
+
+<form id="login-form" method='post' action="{% url 'login' %}">
+{% csrf_token %}
+  <div>
+    {{ form.username.label_tag }}
+    {{ form.username }}
+ </div>
+ <div>
+    {{ form.password.label_tag }}
+    {{ form.password }}
+ </div>
+ <input type="hidden" name="next" value="{% url 'home' %}" />
+  <p>
+    <button type="submit">Login</button>
+  </p> 
+</form>

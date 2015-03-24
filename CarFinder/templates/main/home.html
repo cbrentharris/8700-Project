@@ -2,6 +2,12 @@
     <body>
         <div class="jumbotron">
             <h1>CarFinder home page.</h1>
+            <p>Recent Listings</p>
+            <ul>
+            {% for listing in recent_listings %}
+                <li>{{listing.car}} - {{listing.vendor}}</li>
+            {% endfor %}
+            </ul>
         </div>
     </body>
     <footer>

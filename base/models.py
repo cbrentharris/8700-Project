@@ -21,7 +21,7 @@ class Vendor(models.Model):
 class Listing(models.Model):
     vendor = models.ForeignKey(Vendor)
     car = models.ForeignKey(Car)
-    date_created = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(auto_now_add=True, editable=False)
 
 class ListingImage(models.Model):
     image = models.ImageField(upload_to='listings/images')
